@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CreateBooksSeeder extends Seeder
+class CustomersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +15,13 @@ class CreateBooksSeeder extends Seeder
     {
         $faker=\faker\factory::create();
         for($i=0; $i<50; $i++){
-            DB::table('books')->insert([
-                'ISBN'=>$faker->isbn13('-'),
-                'author'=>$faker->firstNameMale,
-                'title'=>$faker->catchPhrase,
-                'price'=>$faker->randomNumber(2),
-                'cover_url'=>'http://loream.com',
+            DB::table('customers')->insert([
+                'name'=>$faker->firstNameMale,
+                'address'=>$faker->text(50),
+                'city'=>$faker->text(10),
                 'created_at'=>$faker->dateTime($max='now', $timezone=null),
                 'updated_at'=>$faker->dateTime($max='now', $timezone=null)
             ]);
-        }
+    }
     }
 }
